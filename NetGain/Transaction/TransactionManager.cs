@@ -51,11 +51,14 @@ namespace NetGain.Transaction
 		/// the transaction or null if it cannot be parsed</returns>
 		private DateTime? ExpiresStampFromDynamic (dynamic transaction)
 		{
-			DateTime? result = null; ;
-			DateTime tryResult;
-			if (DateTime.TryParse(transaction.expres, out tryResult))
+			DateTime? result = null;
+			if (transaction != null)
 			{
-				result = tryResult;
+				DateTime tryResult;
+				if (DateTime.TryParse(transaction.expires, out tryResult))
+				{
+					result = tryResult;
+				}
 			}
 			return result;
 		}
@@ -81,8 +84,8 @@ namespace NetGain.Transaction
 			var id = TransactionIdFromResponseLocation(response);
 			result.id = id.HasValue ? id.Value : 0;
 			// Parse the transaction dynamic object in the response 
-			var expiresStamp = ExpiresStampFromDynamic(result.transaction);
-			result.expires = expiresStamp.HasValue ? expiresStamp : DateTime.MinValue;
+			DateTime? expiresStamp = ExpiresStampFromDynamic(result.transaction);
+			result.expires = expiresStamp.HasValue ? expiresStamp.Value : DateTime.MinValue;
 
 			return result;
 		}

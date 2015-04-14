@@ -47,6 +47,8 @@
   <ItemGroup>
     <Compile Include="DatabaseProvider.cs" />
     <Compile Include="LabelProvider.cs" />
+    <Compile Include="Security\SecurityProvider.cs" />
+    <Compile Include="Security\UserStatus.cs" />
     <Compile Include="Transaction\Error.cs" />
     <Compile Include="Transaction\Graph.cs" />
     <Compile Include="Transaction\GraphStream.cs" />
