@@ -12,7 +12,7 @@ namespace NetGain
 {
 	public class RelationshipProvider : ProviderBase
 	{
-		private string _urlEndpointPlural = "relationships";
+		protected string _urlEndpointPlural = "relationships";
 
 		public RelationshipProvider() : base()
 		{

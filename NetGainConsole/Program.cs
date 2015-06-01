@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using NetGain;
 using NetGain.Generic;
 using NetGain.Transaction;
+using System.IO;
+using NetGain.Streaming;
 
 namespace NetGainConsole
 {
@@ -16,7 +18,8 @@ namespace NetGainConsole
 			Authenticate();
 			//CreateNode();
 			//RetrieveAllNodesOfType();
-			StreamingGraph();
+			//Graph();
+			Streaming();
 			Console.ReadLine();
 		}
 
@@ -132,6 +135,7 @@ namespace NetGainConsole
 			TransactionManager txMgr = new TransactionManager();
 			Statement stmt = new NetGain.Transaction.Statement();
 			stmt.statement = "CREATE ( bike:Bike { weight: 10 } ) CREATE ( frontWheel:Wheel { spokes: 3 } ) CREATE ( backWheel:Wheel { spokes: 32 } ) CREATE p1 = (bike)-[:HAS { position: 1 } ]->(frontWheel) CREATE p2 = (bike)-[:HAS { position: 2 } ]->(backWheel) RETURN bike, p1, p2";
+			stmt.statement = "MATCH (n)-[r]-() return n, r";
 			Transaction tx = txMgr.ExecuteGraph(new Statement[] { stmt });
 		}
 
@@ -161,17 +165,24 @@ namespace NetGainConsole
 
 		static void Streaming ()
 		{
-			NetGain.LabelProvider lblProvider = new NetGain.LabelProvider() { UseStreaming = true };
-			foreach (var node in lblProvider.Get("Movie"))
+			NetGain.Streaming.LabelProvider lblProvider = new NetGain.Streaming.LabelProvider();
+			
+			char[] buffer = null;
+
+			StreamReader sr = new StreamReader(lblProvider.Get("Movie"));
+			do
 			{
-				Console.WriteLine("{0}", node.data.title);
-			}
+				buffer = new char[16];
+				sr.Read(buffer, 0, buffer.Length);
+				Console.WriteLine(buffer);
+			} while (!sr.EndOfStream);
+	
 		}
 
 		static void StreamingGraph ()
 		{
-			TransactionManager txMgr = new TransactionManager() { UseStreaming = true };
-
+			TransactionManager txMgr = new TransactionManager() { }; // UseStreaming = true };
+			
 			System.IO.Stream stream = new System.IO.MemoryStream();
 
 			Transaction tx = txMgr.ExecuteGraph(new Statement[] { new Statement() { statement = "MATCH (n)-[r]-() RETURN n, r" } });

@@ -18,7 +18,7 @@ namespace NetGain
 		public string DefaultEncoding { get; set; }
 		public string UrlEndpoint { get; set; }
 		public string DefaultContentType { get; set; }
-		public bool UseStreaming { get; set; }
+		protected bool UseStreaming { get; set; }
 
 		public ProviderBase()
 		{
@@ -26,7 +26,6 @@ namespace NetGain
 			UrlRoot = ConfigurationManager.AppSettings["urlRoot"];
 			DefaultEncoding = ConfigurationManager.AppSettings["defaultEncoding"];
 			DefaultContentType = ConfigurationManager.AppSettings["defaultContentType"];
-			UseStreaming = false;
 		}
 
 		protected HttpWebRequest RequestFactory (string urlEndpoint)
@@ -44,7 +43,6 @@ namespace NetGain
 			return webRequest;
 		}
 
-
 		protected HttpWebResponse ExecuteRequest(string url, string method)
 		{
 			HttpWebRequest request = RequestFactory(url, Credential.UserName, Credential.Password);
@@ -57,12 +55,14 @@ namespace NetGain
 			HttpWebRequest request = RequestFactory(url, Credential.UserName, Credential.Password);
 			request.Method = method;
 
-#if DEBUG
+			// All responses from the REST API can be transmitted as JSON streams, resulting in better performance 
+			// and lower memory overhead on the server side. To use streaming, supply the header X-Stream: true 
+			// with each request.
 			if (UseStreaming)
 			{
 				request.AddStreamingHeader();
 			}
-#endif
+
 			if (postBody != null)
 			{
 				// The only content in the body is the label of the node to be created which is

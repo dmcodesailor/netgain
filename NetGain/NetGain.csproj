@@ -49,9 +49,12 @@
     <Compile Include="LabelProvider.cs" />
     <Compile Include="Security\SecurityProvider.cs" />
     <Compile Include="Security\UserStatus.cs" />
+    <Compile Include="Streaming\DatabaseProvider.cs" />
+    <Compile Include="Streaming\LabelProvider.cs" />
+    <Compile Include="Streaming\NodeProvider.cs" />
+    <Compile Include="Streaming\RelationshipProvider.cs" />
     <Compile Include="Transaction\Error.cs" />
     <Compile Include="Transaction\Graph.cs" />
-    <Compile Include="Transaction\GraphStream.cs" />
     <Compile Include="Transaction\Node.cs" />
     <Compile Include="Transaction\Parameter.cs" />
     <Compile Include="Transaction\Relationship.cs" />

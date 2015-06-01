@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Brian C. Lanham</authors>
+    <owners>Brian C. Lanham</owners>
+    <licenseUrl>https://github.com/therealcodesailor/netgain/blob/master/License.md</licenseUrl>
+    <projectUrl>https://github.com/therealcodesailor/netgain</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>C# Neo4j Driver built on Neo4j 2.2 REST API including transactional support</description>
+    <releaseNotes>Fixed a bug in processing the expires value</releaseNotes>
+    <copyright>Copyright 2015</copyright>
+    <tags>C# Neo4j REST</tags>
+  </metadata>
+</package>
