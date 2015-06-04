@@ -37,6 +37,8 @@ Using NetGain
 
 [![Post an issue](https://img.shields.io/badge/Bug%3F-Post%20an%20issue!-blue.svg)](https://github.com/therealcodesailor/netgain/issues/new)
 
+OPTIONAL IF YOU USE GITTER:
+[![Gitter](https://img.shields.io/badge/Gitter-Join%20our%20chat!-blue.svg)](https://gitter.im/therealcodesailor/netgain?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 # What is Neo4j?
 
