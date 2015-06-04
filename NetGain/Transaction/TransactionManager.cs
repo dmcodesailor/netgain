@@ -55,7 +55,8 @@ namespace NetGain.Transaction
 			if (transaction != null)
 			{
 				DateTime tryResult;
-				if (DateTime.TryParse(transaction.expires, out tryResult))
+			    string expires = transaction.expires ?? "";
+			    if (!string.IsNullOrEmpty(expires) && DateTime.TryParse(expires, out tryResult))
 				{
 					result = tryResult;
 				}
