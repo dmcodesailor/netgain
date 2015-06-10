@@ -7,9 +7,6 @@ C# Neo4j Driver built on Neo4j 2.2 REST API including transactional support
 [![Current Version](https://img.shields.io/nuget/v/NetGain.svg)](https://www.nuget.org/packages/NetGain/)
 
 ## Usage
-
-    SHORT CODE SNIPPET SHOWING OFF THE COOLNESS OF NETGAIN
-
 	namespace NetGainConsole 
 	{
 		class Program
