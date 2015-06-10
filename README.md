@@ -95,9 +95,28 @@ To install NetGain, run the following command in the Package Manager Console
 
     PM> Install-Package NetGain
 
-To connect to Neo4j:
+To connect to Neo4j via CONFIG file:
 
-    SHORT CODE SNIPPED SHOWING TO YOU CAN GET CONNECTED TO NEO4J
+	/*
+  		<appSettings>
+			<add key="username" value="neo4j"/>
+			<add key="password" value="[[Enter your password]]]"/>
+			<add key="urlRoot" value="http://localhost:7474/db/data/"/>
+			<add key="defaultEncoding" value="UTF-8"/>
+			<add key="defaultContentType" value="application/json"/>
+		</appSettings>
+	*/
+
+To connect to Neo4j via CODE:
+
+	// Create a provider object.  Any class that inherits from ProviderBase will work the same.
+	NetGain.LabelProvider provider = new NetGain.LabelProvider();
+	provider.Credential = new System.Net.NetworkCredential("neo4j", "enter your password here");
+	provider.DefaultContentType = "application/json";
+	provider.DefaultEncoding = "UTF-8";
+	provider.UrlRoot = "http://localhost:7474/db/data/";
+	// provider.UrlEndpoint is set in each provider class.
+	
 
 Using NetGain
 
