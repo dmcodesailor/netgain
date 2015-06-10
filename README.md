@@ -7,6 +7,17 @@ C# Neo4j Driver built on Neo4j 2.2 REST API including transactional support
 [![Current Version](https://img.shields.io/nuget/v/NetGain.svg)](https://www.nuget.org/packages/NetGain/)
 
 ## Usage
+
+	/*
+  		<appSettings>
+			<add key="username" value="neo4j"/>
+			<add key="password" value="[[Enter your password]]]"/>
+			<add key="urlRoot" value="http://localhost:7474/db/data/"/>
+			<add key="defaultEncoding" value="UTF-8"/>
+			<add key="defaultContentType" value="application/json"/>
+		</appSettings>
+	*/
+
 	namespace NetGainConsole 
 	{
 		class Program
